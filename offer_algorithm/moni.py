@@ -1,33 +1,27 @@
-__author__ = 'wtq'
 
+def split_s(s1):
+    s = [i for i in s1]
+    len_s1 = len(s)
+    if len_s1 <= 8:
+        for i in range(8-len_s1):
+            s.append("0")
+        print "".join(s)
+    else:
+        times = len_s1/8
+        j=0
+        for i in range(times):
+            tmp = s[j:j+8]
+            print "".join(tmp)
+            j+=8
+        tmp = s[j:]
+        if len(tmp)>0:
+            for i in range(8-len(tmp)):
+                tmp.append("0")
 
-def strictly_increasing(L):
-    return all(x<y for x, y in zip(L, L[1:]))
+            print "".join(tmp)
+        
+s1 = raw_input()
+s2 = raw_input()
 
-
-def strictly_decreasing(L):
-    return all(x>y for x, y in zip(L, L[1:]))
-
-n = int(raw_input())
-data = map(int, raw_input().split())
-if n == 0:
-    print 0
-else:
-    count = 1
-    sign = 0
-    for i in range(1, n):
-    	if data[i] < data[i-1]:
-            if sign == 0:
-                sign = -1
-            if sign == 1:
-                sign = 0
-                count += 1
-        elif data[i] > data[i-1]:
-            if sign ==0:
-                sign = 1
-            if sign == -1:
-                sign = 0
-                count += 1
-        print data[i], count, sign
-
-    print count
+split_s(s1)
+split_s(s2)
