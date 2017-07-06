@@ -97,7 +97,7 @@ def get_max_mut_string_baoli(s):
     if s is None:
         return
     if len(s) == 0:
-        return s[1]
+        return
 
     max_result = s[0]
     for i in range(len(s)):

@@ -60,5 +60,4 @@ shortestPalindrome("bacsf")
 
 print kmp_search("aaaaaaaabadfsds", "aaa")
 
-import numpy as np
-np.dot()
+
