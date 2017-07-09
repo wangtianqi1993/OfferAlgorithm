@@ -15,7 +15,7 @@ class MaxHead():
             if child > end:
                 break
 
-            # 找出两个child中交大的一个
+            # 找出两个child中比较大的一个
             if child + 1 <= end and arr[child] < arr[child + 1]:
                 child += 1
 
@@ -93,10 +93,11 @@ class MinHead():
                 break
 
     def heap_sort(self, arr):
-        # 从最后一个有子节点的孩子还是调整最大堆
+        # 从最后一个有子节点的孩子开始调整最大堆
         first = len(arr) // 2 - 1
         for start in range(first, -1, -1):
             self.sift_down(arr, start, len(arr) - 1)
+        print "sort first", arr
 
         # 将最大的放到堆的最后一个, 堆-1, 继续调整排序
         for end in range(len(arr) -1, -1, -1):
@@ -133,9 +134,10 @@ class MinHead():
 def main():
     # [7, 95, 73, 65, 60, 77, 28, 62, 43]
     # [3, 1, 4, 9, 6, 7, 5, 8, 2, 10]
-    l = [3, 1, 4, 9, 6, 7, 5, 8, 2, 10]
+    l = [3, 5, 4, 9, 6, 7, 1, 8, 2, 10]
     hs = MinHead()
     hs.max_n(l, 5)
+    hs.heap_sort(l)
     print l
 
 if __name__ == "__main__":

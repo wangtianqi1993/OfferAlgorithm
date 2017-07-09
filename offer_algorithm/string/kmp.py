@@ -58,6 +58,6 @@ def shortestPalindrome(s):
 getNext("babsf")
 shortestPalindrome("bacsf")
 
-print kmp_search("aaaaaaaabadfsds", "aaa")
+print kmp_search("aabdaabcdbadfsds", "aabcf")
 
 
