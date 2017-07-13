@@ -67,10 +67,11 @@ class AllCom():
             temp = [s[i] for i in index]
             print "".join(temp)
 
+
+
 if __name__ == "__main__":
     ranges = AllRange()
     ranges.all_range("113")
 
     com = AllCom()
     com.combination("123")
-

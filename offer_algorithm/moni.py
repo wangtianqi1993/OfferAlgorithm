@@ -1,27 +1,19 @@
+from multiprocessing import Pool
+import os, time, random
 
-def split_s(s1):
-    s = [i for i in s1]
-    len_s1 = len(s)
-    if len_s1 <= 8:
-        for i in range(8-len_s1):
-            s.append("0")
-        print "".join(s)
-    else:
-        times = len_s1/8
-        j=0
-        for i in range(times):
-            tmp = s[j:j+8]
-            print "".join(tmp)
-            j+=8
-        tmp = s[j:]
-        if len(tmp)>0:
-            for i in range(8-len(tmp)):
-                tmp.append("0")
+def long_time_task(name):
+    print 'Run task %s (%s)...' % (name, os.getpid())
+    start = time.time()
+    time.sleep(random.random() * 3)
+    end = time.time()
+    print 'Task %s runs %0.2f seconds.' % (name, (end - start))
 
-            print "".join(tmp)
-        
-s1 = raw_input()
-s2 = raw_input()
-
-split_s(s1)
-split_s(s2)
+if __name__=='__main__':
+    print 'Parent process %s.' % os.getpid()
+    p = Pool()
+    for i in range(5):
+        p.apply_async(long_time_task, args=(i,))
+    print 'Waiting for all subprocesses done...'
+    p.close()
+    p.join()
+    print 'All subprocesses done.'

@@ -53,7 +53,7 @@ def get_longest_common_string(s1, s2):
     print max_string_len
 
 
-def get_longest_increace_seq(s):
+def get_longest_increace_seq1(s):
     """
     计算s中最长的单调递增的子序列
     :param s1:
@@ -64,12 +64,9 @@ def get_longest_increace_seq(s):
     s_len = len(s)
     dp = [0]*s_len
     dp[0] = 1
-    prev = [0]*s_len
 
     for i in range(1, s_len):
         dp[i] = 1
-        prev[i] = -1
-
         for j in range(i-1, -1, -1):
             if dp[j]+1 > dp[i] and s[j] < s[i]:
                 dp[i] = dp[j] + 1
@@ -77,7 +74,35 @@ def get_longest_increace_seq(s):
             max_len = dp[i]
     print dp, max_len
 
-get_longest_increace_seq([1,2,3,4,2,1])
+
+def get_longest_increace_seq2(data):
+    """
+    第二种方法求解最长递增子序列，即对data升序排序得到data2
+    求data与data2的最长公共递增子序列
+    :param data:
+    :return:
+    """
+    remove_index = []
+    for i in range(1, len(data)):
+        if data[i] == data[i-1]:
+            remove_index.append(i)
+
+    new_data = [data[i] for i in range(len(data)) if i not in remove_index]
+    data_s = sorted(new_data)
+    dp = []
+    for i in range(len(new_data)+1):
+        dp.append([0]*(len(new_data)+1))
+
+    for i in range(1, len(new_data)+1):
+        for j in range(1, len(new_data)+1):
+            if new_data[i-1]==data_s[j-1]:
+                dp[i][j] = dp[i-1][j-1]+1
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+    print dp
+
+
+get_longest_increace_seq2([1,2,3,-1,0,0,2,1])
 
 
 # s1 = "ABCDEFGH"
@@ -138,3 +163,5 @@ for i in range(100):
         elif ring_state[j] == 1:
             ring_state[j] = 0
 print ring_state
+
+
