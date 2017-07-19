@@ -132,10 +132,31 @@ def test_algorithm():
     time6 = time.time()
     print time6 - time5
 
+fib = lambda n: n if n < 2 else 2*fib(n-1)
+f_matrix = lambda n: 1 if n<2 else f_matrix(n-1)+f_matrix(n-2)
+
+
+def rebuild(pre, center):
+    if not pre:
+        return
+    cur = Node(pre[0])
+    index = center.index(pre[0])
+    cur.left = rebuild(pre[1:index+1], center[:index])
+    cur.right = rebuild(pre[index+1:], center[index+1:])
+    return cur
+def later(root):
+    if not root:
+        return
+    later(root.left)
+    later(root.right)
+    print root.data
+
 
 if __name__ == "__main__":
     # FirstNotRepeatingChar()
     # test()
-    second()
+    # second()
     # test_algorithm()
+    print fib(6)
+    print f_matrix(5)
 

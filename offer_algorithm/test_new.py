@@ -242,3 +242,24 @@ if __name__ == "__main__":
             nums[start] = nums[i]
             start += 1
     print nums
+
+def calculate_len(data):
+    """
+
+    :param data: n个点的起止坐标例如[[1,2],[2,3],[3,4]]
+    :return:
+    """
+    # 根据每个点的第一个值由小到大的排序
+    data_sort = sorted(data, key=lambda x: x[0])
+    all_len = 0
+    # 先统计出所有线段的长度，不考虑覆盖的情况
+    for index in range(len(data_sort)):
+        all_len += data_sort[index][1]-data_sort[index][0]
+
+    cover_len = 0
+    for index in range(len(data_sort)-1):
+        if data_sort[index][1]>data_sort[index+1][0]:
+            cover_len = data_sort[index][1]-data_sort[index+1][0]
+
+    return all_len - cover_len
+
