@@ -35,5 +35,5 @@ def lower_bound_find(data, obj):
             end = half
     print start
 
-data = [1,2,7,8,10]
-lower_bound_find(data, 9)
+data = [1,2,7,8,8]
+lower_bound_find(data, 8)

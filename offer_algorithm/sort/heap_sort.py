@@ -31,7 +31,8 @@ class MaxHead():
 
     def heap_sort(self, arr):
         # 从最后一个有子节点的孩子还是调整最大堆
-        first = len(arr) // 2 - 1
+        # first = len(arr) // 2 - 1
+        first = (len(arr)-1)/2
         for start in range(first, -1, -1):
             self.sift_down(arr, start, len(arr) - 1)
 
@@ -55,7 +56,7 @@ class MaxHead():
             top_n.append(arr[i])
 
         # 将当前top_n中的数建成最大堆
-        first = len(top_n) // 2 - 1
+        first = (len(top_n)-1) // 2
         for start in range(first, -1, -1):
             self.sift_down(top_n, start, len(top_n) - 1)
 
@@ -94,7 +95,7 @@ class MinHead():
 
     def heap_sort(self, arr):
         # 从最后一个有子节点的孩子开始调整最大堆
-        first = len(arr) // 2 - 1
+        first = (len(arr)-1) // 2
         for start in range(first, -1, -1):
             self.sift_down(arr, start, len(arr) - 1)
         print "sort first", arr
@@ -119,7 +120,7 @@ class MinHead():
             top_n.append(arr[i])
 
         # 将当前top_n中的数建成最小堆
-        first = len(top_n) // 2 - 1
+        first = (len(top_n)-1) // 2
         for start in range(first, -1, -1):
             self.sift_down(top_n, start, len(top_n) - 1)
 
@@ -135,9 +136,12 @@ def main():
     # [7, 95, 73, 65, 60, 77, 28, 62, 43]
     # [3, 1, 4, 9, 6, 7, 5, 8, 2, 10]
     l = [3, 5, 4, 9, 6, 7, 1, 8, 2, 10]
-    hs = MinHead()
-    hs.max_n(l, 5)
-    hs.heap_sort(l)
+    hs_m = MinHead()
+    hs_m.heap_sort(l)
+    hs_m.max_n(l, 5)
+    # hs = MaxHead()
+    # hs.max_n(l, 5)
+    #hs.heap_sort(l)
     print l
 
 if __name__ == "__main__":

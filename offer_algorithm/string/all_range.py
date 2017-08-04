@@ -54,21 +54,6 @@ class AllCom():
                 tep = [s[p] for p in index]
                 print "".join(tep)
 
-    def comb(self, s):
-        if s is None:
-            return
-        len_s = len(s)
-        sum_num = 1<<len_s
-        for i in range(1, sum_num):
-            index = []
-            for j in range(len_s):
-                if i&(1<<j):
-                    index.append(j)
-            temp = [s[i] for i in index]
-            print "".join(temp)
-
-
-
 if __name__ == "__main__":
     ranges = AllRange()
     ranges.all_range("113")

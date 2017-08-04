@@ -7,6 +7,13 @@ import os
 
 
 def beibao_0_1_core(val, wt, bao_store):
+    """
+    算法参考链接：https://www.nowcoder.com/discuss/3574
+    :param val:
+    :param wt:
+    :param bao_store:
+    :return:
+    """
     N = len(wt)
     V = []
 
@@ -42,6 +49,4 @@ if __name__ == "__main__":
     bao_store = 10
     beibao_0_1_core(val, wt, bao_store)
     more_sample_beibao(val, wt, bao_store)
-    a = set([1,2,3,4])
-    a.remove(1)
-    print 5&1
+
